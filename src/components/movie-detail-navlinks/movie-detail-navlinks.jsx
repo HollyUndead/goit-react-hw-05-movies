@@ -2,7 +2,7 @@ import { MovieCast } from 'components/movie-cast/movie-cast';
 import { MovieReview } from 'components/movie-reviews/movie-reviw';
 import { NavLink } from 'react-router-dom';
 
-export const MovieDetailNavlinks = ({ ...props }) => {
+export const MovieCastOrReviw = ({ ...props }) => {
   const { castPath, reviwPath, idForFetch } = props;
 
   return (

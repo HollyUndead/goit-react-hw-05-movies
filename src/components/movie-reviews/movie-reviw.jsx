@@ -25,13 +25,13 @@ export const MovieReview = ({ ...props }) => {
     return <></>;
   }
   return (
-    <p>
+    <div>
       <ul className="review-list">
         {review.results.map(el => {
           return <MovieReviewItem movieReview={el} key={el.id} />;
         })}
       </ul>
       {error === false ? <></> : <h2>Oops, there was an error</h2>}
-    </p>
+    </div>
   );
 };
