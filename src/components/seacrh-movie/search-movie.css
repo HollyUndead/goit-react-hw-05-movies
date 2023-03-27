@@ -1,0 +1,13 @@
+.search-form{
+    margin-left: 40px;
+}
+
+.input-movie-name{
+    width: 250px;
+    margin-right: 10px;
+    background-color: #fafafa;
+}
+
+.search-button{
+    width: 70px;
+}

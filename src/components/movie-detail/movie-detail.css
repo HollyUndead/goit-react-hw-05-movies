@@ -1,0 +1,23 @@
+.router{
+    display: flex;
+    gap: 20px;
+}
+
+.movie-wraper{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.main-info-wrap{
+    display: flex;
+    gap: 20px;
+}
+
+.movie-poster{
+    min-width: 700px;
+    height: auto;
+}
+
+.go-back{
+    margin-bottom: 10px;
+}
