@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/goit-react-hw-05-movies/static/css/main.912ddec5.css",
-    "main.js": "/goit-react-hw-05-movies/static/js/main.8aac87f8.js",
+    "main.js": "/goit-react-hw-05-movies/static/js/main.ba11beef.js",
     "static/css/142.fd6211bc.chunk.css": "/goit-react-hw-05-movies/static/css/142.fd6211bc.chunk.css",
-    "static/js/142.4305cb38.chunk.js": "/goit-react-hw-05-movies/static/js/142.4305cb38.chunk.js",
+    "static/js/142.008672c4.chunk.js": "/goit-react-hw-05-movies/static/js/142.008672c4.chunk.js",
     "static/js/139.831c7f42.chunk.js": "/goit-react-hw-05-movies/static/js/139.831c7f42.chunk.js",
     "static/css/622.7ca852ea.chunk.css": "/goit-react-hw-05-movies/static/css/622.7ca852ea.chunk.css",
     "static/js/622.6614802a.chunk.js": "/goit-react-hw-05-movies/static/js/622.6614802a.chunk.js",
@@ -13,9 +13,9 @@
     "static/media/png-transparent-black-and-white-no-to-camera-logo-video-on-demand-retail-website-simple-no-miscellaneous-television-text.png": "/goit-react-hw-05-movies/static/media/png-transparent-black-and-white-no-to-camera-logo-video-on-demand-retail-website-simple-no-miscellaneous-television-text.324e299aa2459b74b214.png",
     "index.html": "/goit-react-hw-05-movies/index.html",
     "main.912ddec5.css.map": "/goit-react-hw-05-movies/static/css/main.912ddec5.css.map",
-    "main.8aac87f8.js.map": "/goit-react-hw-05-movies/static/js/main.8aac87f8.js.map",
+    "main.ba11beef.js.map": "/goit-react-hw-05-movies/static/js/main.ba11beef.js.map",
     "142.fd6211bc.chunk.css.map": "/goit-react-hw-05-movies/static/css/142.fd6211bc.chunk.css.map",
-    "142.4305cb38.chunk.js.map": "/goit-react-hw-05-movies/static/js/142.4305cb38.chunk.js.map",
+    "142.008672c4.chunk.js.map": "/goit-react-hw-05-movies/static/js/142.008672c4.chunk.js.map",
     "139.831c7f42.chunk.js.map": "/goit-react-hw-05-movies/static/js/139.831c7f42.chunk.js.map",
     "622.7ca852ea.chunk.css.map": "/goit-react-hw-05-movies/static/css/622.7ca852ea.chunk.css.map",
     "622.6614802a.chunk.js.map": "/goit-react-hw-05-movies/static/js/622.6614802a.chunk.js.map",
@@ -25,6 +25,6 @@
   },
   "entrypoints": [
     "static/css/main.912ddec5.css",
-    "static/js/main.8aac87f8.js"
+    "static/js/main.ba11beef.js"
   ]
 }
