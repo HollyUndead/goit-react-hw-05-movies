@@ -29,13 +29,22 @@ export const App = () => {
         <StateContext.Provider value={{ movieId, setMovieId }}>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Layout />}>
+              <Route path="/goit-react-hw-05-movies" element={<Layout />}>
                 <Route index element={<Home />} />
-                <Route path="/movies" element={<Movies />} />
-                <Route path="/movie/:movieId" element={<MovieDetail />} />
-                <Route path="/movie/:movieId/cast" element={<MovieDetail />} />
                 <Route
-                  path="/movie/:movieId/review"
+                  path="/goit-react-hw-05-movies/movies"
+                  element={<Movies />}
+                />
+                <Route
+                  path="/goit-react-hw-05-movies/movie/:movieId"
+                  element={<MovieDetail />}
+                />
+                <Route
+                  path="/goit-react-hw-05-movies/movie/:movieId/cast"
+                  element={<MovieDetail />}
+                />
+                <Route
+                  path="/goit-react-hw-05-movies/movie/:movieId/review"
                   element={<MovieDetail />}
                 />
                 <Route path="*" element={<Home />} />

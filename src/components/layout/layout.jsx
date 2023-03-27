@@ -11,12 +11,12 @@ const Layout = () => {
     >
       <ul className="header">
         <li>
-          <NavLink className="layout" to="/" end>
+          <NavLink className="layout" to="/goit-react-hw-05-movies" end>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink className="layout" to="/movies">
+          <NavLink className="layout" to="/goit-react-hw-05-movies/movies">
             Movie
           </NavLink>
         </li>

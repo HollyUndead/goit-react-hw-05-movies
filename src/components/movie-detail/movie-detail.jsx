@@ -48,8 +48,8 @@ const MovieDetail = () => {
     imgSrc = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     userScore = Math.round(movie.vote_average * 10);
     genres = movie.genres.map(el => el.name).join(', ');
-    castPath = `/movie/${movieId}/cast`;
-    reviwPath = `/movie/${movieId}/review`;
+    castPath = `/goit-react-hw-05-movies/movie/${movieId}/cast`;
+    reviwPath = `/goit-react-hw-05-movies/movie/${movieId}/review`;
   }
 
   return (

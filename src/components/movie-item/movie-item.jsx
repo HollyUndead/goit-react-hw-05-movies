@@ -8,7 +8,7 @@ export const MovieItem = ({ ...props }) => {
   const sendMovie = () => {
     setMovieId(movie.id);
   };
-  const path = `/movie/${movie.id}`;
+  const path = `/goit-react-hw-05-movies/movie/${movie.id}`;
   const imgPath = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   return (
     <li className="movie-item">
