@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { MovieItem } from 'components/movie-item/movie-item';
@@ -12,10 +12,18 @@ const Movies = () => {
   const handleSubmit = ev => {
     ev.preventDefault();
     let queryForSearch = ev.target.movieName.value;
-    navigate(`/movies?query=${queryForSearch}`);
+    navigate(`/goit-react-hw-05-movies/movies?query=${queryForSearch}`);
     ev.target.reset();
     fetchData(queryForSearch);
   };
+
+  useEffect(() => {
+    const currentUrl = window.location.href;
+    const indexOfQueru = currentUrl.indexOf('query=') + 6;
+    if (indexOfQueru !== -1) {
+      fetchData(currentUrl.slice(indexOfQueru));
+    }
+  }, []);
 
   const fetchData = async query => {
     axios
@@ -40,7 +48,6 @@ const Movies = () => {
           return <MovieItem movie={el} key={el.id} />;
         })}
       </ul>
-      ;
     </div>
   );
 };

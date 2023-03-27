@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 
 export const MovieDetailNavlinks = ({ ...props }) => {
   const { castPath, reviwPath, idForFetch } = props;
-  console.log(idForFetch);
 
   return (
     <div>

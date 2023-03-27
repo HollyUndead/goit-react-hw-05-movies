@@ -9,8 +9,13 @@ import './movie-detail.css';
 const MovieDetail = () => {
   const [movie, setMovie] = useState();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const { movieId, setMovieId } = useContext(StateContext);
   const navigate = useNavigate();
+
+  const goBackButton = () => {
+    navigate(-1);
+  };
 
   useEffect(() => {
     let idForFetch = movieId;
@@ -25,7 +30,7 @@ const MovieDetail = () => {
         setMovie(res.data);
         setLoading(false);
       } catch (error) {
-        console.log(error);
+        setError(error);
       }
     }
     if (idForFetch === undefined) {
@@ -58,7 +63,7 @@ const MovieDetail = () => {
         <Loader />
       ) : (
         <div className="movie-wraper">
-          <button type="button" className="go-back">
+          <button type="button" className="go-back" onClick={goBackButton}>
             Go back
           </button>
           <div className="main-info-wrap">
@@ -79,6 +84,7 @@ const MovieDetail = () => {
           />
         </div>
       )}
+      {error === false ? <></> : <h2>Oops, there was an error</h2>}
     </div>
   );
 };

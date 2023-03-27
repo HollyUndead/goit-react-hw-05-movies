@@ -5,32 +5,33 @@ import { MovieReviewItem } from 'components/movie-reviews-item/movie-reviews-ite
 export const MovieReview = ({ ...props }) => {
   const { idForFetch } = props;
   const [review, setReview] = useState();
+  const [error, setError] = useState(false);
   useEffect(() => {
     async function fetchData() {
-      console.log(idForFetch);
       try {
         const res = await axios.get(
           `https://api.themoviedb.org/3/movie/${idForFetch}/reviews?api_key=b76e2e4e0948108c3961a907afb4d0c6`
         );
-        console.log(res.data.results);
         setReview(res.data);
       } catch (error) {
-        console.log(error);
+        setError(error);
       }
     }
     fetchData();
     /* eslint-disable-next-line */
   }, []);
-  console.log(review);
 
   if (review === undefined) {
     return <></>;
   }
   return (
-    <ul className="review-list">
-      {review.results.map(el => {
-        return <MovieReviewItem movieReview={el} key={el.id} />;
-      })}
-    </ul>
+    <p>
+      <ul className="review-list">
+        {review.results.map(el => {
+          return <MovieReviewItem movieReview={el} key={el.id} />;
+        })}
+      </ul>
+      {error === false ? <></> : <h2>Oops, there was an error</h2>}
+    </p>
   );
 };

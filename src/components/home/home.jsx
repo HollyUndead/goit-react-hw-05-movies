@@ -6,6 +6,7 @@ import { Loader } from 'components/loader/loader';
 const Home = () => {
   const [trandingMovies, setTrandingMovies] = useState();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   useEffect(() => {
     setLoading(true);
     axios
@@ -16,7 +17,7 @@ const Home = () => {
         setTrandingMovies(res.data.results);
       })
       .catch(error => {
-        console.log(error);
+        setError(error);
       })
       .finally(() => {
         setLoading(false);
@@ -32,6 +33,7 @@ const Home = () => {
           return <MovieItem movie={el} key={el.id} />;
         })
       )}
+      {error === false ? <></> : <h2>Oops, there was an error</h2>}
     </ul>
   );
 };
