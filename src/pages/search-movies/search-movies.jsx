@@ -5,14 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { MovieItem } from 'components/movie-item/movie-item';
 import './search-movie.css';
 
-const Movies = () => {
+const SearchMovies = () => {
   const [movieList, setMovieList] = useState([]);
   const navigate = useNavigate();
 
   const handleSubmit = ev => {
     ev.preventDefault();
     let queryForSearch = ev.target.movieName.value;
-    navigate(`/goit-react-hw-05-movies/movies?query=${queryForSearch}`);
+    navigate(`/movies?query=${queryForSearch}`);
     ev.target.reset();
     fetchData(queryForSearch);
   };
@@ -52,4 +52,4 @@ const Movies = () => {
   );
 };
 
-export default Movies;
+export default SearchMovies;

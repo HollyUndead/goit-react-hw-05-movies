@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { createContext } from 'react';
 import { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import { Loader } from './loader/loader';
+import { MovieCast } from 'pages/movie-cast/movie-cast';
+import { MovieReview } from 'pages/movie-reviews/movie-review';
 import './App.css';
 
-const Layout = lazy(() => import('./layout/layout.jsx'));
-const Home = lazy(() => import('./home/home.jsx'));
-const Movies = lazy(() => import('./seacrh-movie/search-movies.jsx'));
-const MovieDetail = lazy(() => import('./movie-detail/movie-detail'));
+const Layout = lazy(() => import('./layout/layout'));
+const Home = lazy(() => import('../pages/home/home'));
+const SearchMovies = lazy(() => import('../pages/search-movies/search-movies'));
+const MovieDetail = lazy(() => import('../pages/movie-detail/movie-detail'));
 export const StateContext = createContext();
 
 export const App = () => {
@@ -25,32 +27,22 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      <Suspense fallback={Loader}>
+      <Suspense fallback={<Loader />}>
         <StateContext.Provider value={{ movieId, setMovieId }}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/goit-react-hw-05-movies/" element={<Layout />}>
-                <Route index element={<Home />} />
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="/movies" element={<SearchMovies />} />
+              <Route path="/movie/:movieId/" element={<MovieDetail />}>
+                <Route path="/movie/:movieId/cast" element={<MovieCast />} />
                 <Route
-                  path="/goit-react-hw-05-movies/movies"
-                  element={<Movies />}
+                  path="/movie/:movieId/review"
+                  element={<MovieReview />}
                 />
-                <Route
-                  path="/goit-react-hw-05-movies/movie/:movieId"
-                  element={<MovieDetail />}
-                />
-                <Route
-                  path="/goit-react-hw-05-movies/movie/:movieId/cast"
-                  element={<MovieDetail />}
-                />
-                <Route
-                  path="/goit-react-hw-05-movies/movie/:movieId/review"
-                  element={<MovieDetail />}
-                />
-                <Route path="*" element={<Home />} />
               </Route>
-            </Routes>
-          </BrowserRouter>
+              <Route path="*" element={<Home />} />
+            </Route>
+          </Routes>
         </StateContext.Provider>
       </Suspense>
     </div>

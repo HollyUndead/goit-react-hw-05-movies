@@ -10,7 +10,7 @@ export const MovieItem = ({ ...props }) => {
   const currentLocation = useLocation();
   const sendMovie = () => {
     setMovieId(movie.id);
-    navigate(`/goit-react-hw-05-movies/movie/${movie.id}`, {
+    navigate(`/movie/${movie.id}`, {
       state: currentLocation,
     });
   };

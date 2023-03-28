@@ -2,11 +2,17 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MovieCastItem } from 'components/movie-cast-item/movie-cast-item';
 import './movie-cast.css';
+import { useLocation } from 'react-router-dom';
 
-export const MovieCast = ({ ...props }) => {
-  const { idForFetch } = props;
-  const [cast, setCast] = useState();
+export const MovieCast = () => {
+  const [cast, setCast] = useState({ cast: [] });
   const [error, setError] = useState(false);
+  const currentLocation = useLocation();
+  /* eslint-disable-next-line */
+  const [idForFetch, setIdForFetch] = useState(
+    currentLocation.state.idForFetch
+  );
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -15,15 +21,12 @@ export const MovieCast = ({ ...props }) => {
         );
         setCast(res.data);
       } catch (error) {
-        setError(error);
+        setError(error.message);
       }
     }
     fetchData();
-    /* eslint-disable-next-line */
-  }, []);
-  if (cast === undefined) {
-    return <></>;
-  }
+  }, [idForFetch]);
+
   return (
     <div>
       <ul className="cast-list">
@@ -38,7 +41,7 @@ export const MovieCast = ({ ...props }) => {
           );
         })}
       </ul>
-      {error === false ? <></> : <h2>Oops, there was an error</h2>}
+      {error === false ? <></> : <h2>Oops, there was an error: {error}</h2>}
     </div>
   );
 };

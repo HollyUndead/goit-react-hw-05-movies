@@ -1,8 +1,9 @@
 import axios from 'axios';
+
 import { Loader } from 'components/loader/loader';
+import MoiveDetailNavLinks from 'components/movie-detail-navlinks/movie-detail-navlinks';
 import { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { MovieCastOrReviw } from 'components/movie-detail-navlinks/movie-detail-navlinks';
 import './movie-detail.css';
 
 const MovieDetail = () => {
@@ -24,15 +25,8 @@ const MovieDetail = () => {
       .slice(location.pathname.indexOf('movie/') + 6)
       .replace('/cast', '')
       .replace('/reviw', '');
-    let localPrevPage = localStorage.getItem('prevPage');
-
     if (location.state !== null) {
       prevLocation.current = location.state.pathname + location.state.search;
-      localStorage.setItem('prevPage', prevLocation.current);
-    } else if (localPrevPage !== null) {
-      prevLocation.current = localPrevPage;
-    } else {
-      prevLocation.current = '/goit-react-hw-05-movies/';
     }
     async function fetchData() {
       try {
@@ -49,14 +43,12 @@ const MovieDetail = () => {
     /* eslint-disable-next-line */
   }, []);
 
-  let imgSrc, userScore, genres, castPath, reviwPath;
+  let imgSrc, userScore, genres;
 
   if (movie !== undefined) {
     imgSrc = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     userScore = Math.round(movie.vote_average * 10);
     genres = movie.genres.map(el => el.name).join(', ');
-    castPath = `/goit-react-hw-05-movies/movie/${idForFetch.current}/cast`;
-    reviwPath = `/goit-react-hw-05-movies/movie/${idForFetch.current}/review`;
   }
 
   return (
@@ -79,14 +71,9 @@ const MovieDetail = () => {
               <p className="genres">{genres}</p>
             </div>
           </div>
-          <MovieCastOrReviw
-            castPath={castPath}
-            reviwPath={reviwPath}
-            idForFetch={idForFetch.current}
-          />
+          <MoiveDetailNavLinks idForFetch={idForFetch.current} />
         </div>
       )}
-      {error === false ? <></> : <h2>Oops, there was an error</h2>}
     </div>
   );
 };

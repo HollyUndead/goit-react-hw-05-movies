@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MovieReviewItem } from 'components/movie-reviews-item/movie-reviews-item';
+import { useLocation } from 'react-router-dom';
 
-export const MovieReview = ({ ...props }) => {
-  const { idForFetch } = props;
-  const [review, setReview] = useState();
+export const MovieReview = () => {
+  const [review, setReview] = useState({ results: [] });
   const [error, setError] = useState(false);
+  const currentLocation = useLocation();
+  /* eslint-disable-next-line */
+  const [idForFetch, setIdForFetch] = useState(
+    currentLocation.state.idForFetch
+  );
+
   useEffect(() => {
+    console.log(idForFetch);
     async function fetchData() {
       try {
         const res = await axios.get(
@@ -14,16 +21,12 @@ export const MovieReview = ({ ...props }) => {
         );
         setReview(res.data);
       } catch (error) {
-        setError(error);
+        setError(error.message);
       }
     }
     fetchData();
-    /* eslint-disable-next-line */
-  }, []);
+  }, [idForFetch]);
 
-  if (review === undefined) {
-    return <></>;
-  }
   return (
     <div>
       <ul className="review-list">
@@ -31,7 +34,7 @@ export const MovieReview = ({ ...props }) => {
           return <MovieReviewItem movieReview={el} key={el.id} />;
         })}
       </ul>
-      {error === false ? <></> : <h2>Oops, there was an error</h2>}
+      {error === false ? <></> : <h2>Oops, there was an error: {error}</h2>}
     </div>
   );
 };
