@@ -74,6 +74,7 @@ const MovieDetail = () => {
           <MoiveDetailNavLinks idForFetch={idForFetch.current} />
         </div>
       )}
+      {error === false ? <></> : <h2>Oops, there was an error: {error}</h2>}
     </div>
   );
 };
