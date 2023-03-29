@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Loader } from 'components/loader/loader';
 import MoiveDetailNavLinks from 'components/movie-detail-navlinks/movie-detail-navlinks';
 import { useEffect, useState, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Outlet } from 'react-router-dom';
 import './movie-detail.css';
 
 const MovieDetail = () => {
@@ -50,7 +50,7 @@ const MovieDetail = () => {
     userScore = Math.round(movie.vote_average * 10);
     genres = movie.genres.map(el => el.name).join(', ');
   }
-
+  console.log(movie);
   return (
     <div>
       {loading ? (
@@ -72,6 +72,7 @@ const MovieDetail = () => {
             </div>
           </div>
           <MoiveDetailNavLinks idForFetch={idForFetch.current} />
+          <Outlet />
         </div>
       )}
       {error === false ? <></> : <h2>Oops, there was an error: {error}</h2>}

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const MoiveDetailNavLinks = ({ ...props }) => {
   const { idForFetch } = props;
@@ -43,7 +43,6 @@ const MoiveDetailNavLinks = ({ ...props }) => {
           Review
         </NavLink>
       </div>
-      <Outlet />
     </div>
   );
 };
