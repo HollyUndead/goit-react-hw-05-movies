@@ -2,22 +2,18 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MovieCastItem } from 'components/movie-cast-item/movie-cast-item';
 import './movie-cast.css';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export const MovieCast = () => {
   const [cast, setCast] = useState({ cast: [] });
   const [error, setError] = useState(false);
-  const currentLocation = useLocation();
-  /* eslint-disable-next-line */
-  const [idForFetch, setIdForFetch] = useState(
-    currentLocation.state.idForFetch
-  );
+  const { movieId } = useParams();
 
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await axios.get(
-          `https://api.themoviedb.org/3/movie/${idForFetch}/credits?api_key=b76e2e4e0948108c3961a907afb4d0c6`
+          `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=b76e2e4e0948108c3961a907afb4d0c6`
         );
         setCast(res.data);
       } catch (error) {
@@ -25,7 +21,8 @@ export const MovieCast = () => {
       }
     }
     fetchData();
-  }, [idForFetch]);
+    /* eslint-disable-next-line */
+  }, []);
 
   return (
     <div>
